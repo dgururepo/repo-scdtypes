@@ -1,0 +1,15 @@
+{
+	"name": "adf-scdtypes",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "00c3107f-645d-4b6d-941f-dfcf49140c54",
+		"tenantId": "fc51b134-32c7-4a6d-a4b6-33340d0291d0"
+	}
+}
