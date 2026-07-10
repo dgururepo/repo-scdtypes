@@ -1,0 +1,16 @@
+{
+	"name": "ds_dim_sqltable_scd1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dim_sqltable_scd1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Customers_scd"
+		}
+	}
+}
