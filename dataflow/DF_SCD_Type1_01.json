@@ -80,14 +80,7 @@
 				"     keys:['CustomerID'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     mapColumn(",
-				"          CustomerID,",
-				"          Address,",
-				"          City,",
-				"          Phone,",
-				"          LastUpdatedDate",
-				"     )) ~> DimCustomerType1"
+				"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
 			]
 		}
 	}
