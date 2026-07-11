@@ -53,7 +53,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> srcDimsqltable",
-				"srcexcel, srcDimsqltable join(srcexcel@CustomerID == srcDimsqltable@CustomerID,",
+				"srcexcel, srcDimsqltable join(CustomerID == ERROR_FUNCTION(''),",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
