@@ -37,6 +37,9 @@
 				},
 				{
 					"name": "alterRow1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -66,13 +69,26 @@
 				"     broadcast: 'auto')~> join1",
 				"join1 derive(LastUpdatedDate = currentTimestamp()) ~> derlastupdateddate",
 				"derlastupdateddate alterRow(upsertIf(true())) ~> alterRow1",
-				"alterRow1 sink(allowSchemaDrift: true,",
+				"alterRow1 select(mapColumn(",
+				"          CustomerID = srcexcel@CustomerID,",
+				"          Address = srcexcel@Address,",
+				"          City = srcexcel@City,",
+				"          Phone = srcexcel@Phone,",
+				"          CustomerID = srcDimsqltable@CustomerID,",
+				"          Address = srcDimsqltable@Address,",
+				"          City = srcDimsqltable@City,",
+				"          Phone = srcDimsqltable@Phone,",
+				"          LastUpdatedDate",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
-				"     insertable:true,",
+				"     insertable:false,",
 				"     updateable:false,",
 				"     upsertable:true,",
-				"     keys:['CustomerID'],",
+				"     keys:['CustomerID','Address','City','Phone','LastUpdatedDate'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
