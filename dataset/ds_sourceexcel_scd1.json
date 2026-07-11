@@ -14,7 +14,8 @@
 				"fileName": "Customer_SCD1.xlsx",
 				"folderPath": "scd-type1",
 				"fileSystem": "scd"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": []
 	}
