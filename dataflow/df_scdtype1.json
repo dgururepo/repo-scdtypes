@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "df_scdtype1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,7 +9,14 @@
 						"referenceName": "ds_sourceexcel_scd1",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "srcexcel"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dim_sqltable_scd1",
+						"type": "DatasetReference"
+					},
+					"name": "srcDimsqltable"
 				}
 			],
 			"sinks": [],
@@ -17,7 +24,17 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> srcexcel",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          Address as string,",
+				"          City as string,",
+				"          Phone as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcDimsqltable"
 			]
 		}
 	}
