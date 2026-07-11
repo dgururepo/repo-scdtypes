@@ -33,9 +33,6 @@
 					"name": "join1"
 				},
 				{
-					"name": "derlastupdateddate"
-				},
-				{
 					"name": "alterRow1"
 				}
 			],
@@ -64,12 +61,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 derive(CustomerID = srcexcel@CustomerID,",
-				"          Address = srcexcel@Address,",
-				"          City = srcexcel@City,",
-				"          Phone = srcexcel@Phone,",
-				"          LastUpdatedDate = currentTimestamp()) ~> derlastupdateddate",
-				"derlastupdateddate alterRow(insertIf(true()),",
+				"join1 alterRow(insertIf(true()),",
 				"     updateIf(true())) ~> alterRow1",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
