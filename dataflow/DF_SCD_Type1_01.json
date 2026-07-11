@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_sourceexcel_scd1",
+						"referenceName": "ds_sourceexcel_scd1_04",
 						"type": "DatasetReference"
 					},
 					"name": "srcexcel"
 				},
 				{
 					"dataset": {
-						"referenceName": "ds_dim_sqltable_scd1",
+						"referenceName": "ds_dim_sqltable_scd1_04",
 						"type": "DatasetReference"
 					},
 					"name": "srcDimsqltable"
@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_dim_sqltable_scd1",
+						"referenceName": "ds_dim_sqltable_scd1_04",
 						"type": "DatasetReference"
 					},
 					"name": "DimCustomerType1"
