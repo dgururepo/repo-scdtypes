@@ -71,6 +71,7 @@
 				"     upsertable:false,",
 				"     keys:['CustomerID'],",
 				"     format: 'table',",
+				"     preSQLs:['truncate table dbo.Customers_scd'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
 			]
