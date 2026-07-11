@@ -1,5 +1,5 @@
 {
-	"name": "df_scdtype1_01",
+	"name": "DF_SCD_Type1_01",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -23,10 +23,22 @@
 			"transformations": [
 				{
 					"name": "join1"
+				},
+				{
+					"name": "derlastupdateddate"
+				},
+				{
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          CustomerID as short,",
+				"          Address as string,",
+				"          City as string,",
+				"          Phone as long",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> srcexcel",
 				"source(output(",
@@ -39,11 +51,13 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> srcDimsqltable",
-				"srcexcel, srcDimsqltable join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"srcexcel, srcDimsqltable join(srcexcel@CustomerID == srcDimsqltable@CustomerID,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 derive(LastUpdatedDate = currentTimestamp()) ~> derlastupdateddate",
+				"derlastupdateddate alterRow(upsertIf(true())) ~> alterRow1"
 			]
 		}
 	}
