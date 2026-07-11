@@ -77,10 +77,17 @@
 				"     insertable:true,",
 				"     updateable:true,",
 				"     upsertable:false,",
-				"     keys:['CustomerID'],",
+				"     keys:[''],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          CustomerId = CustomerID,",
+				"          Address,",
+				"          City,",
+				"          Phone,",
+				"          LastUpdatedDate",
+				"     )) ~> DimCustomerType1"
 			]
 		}
 	}
