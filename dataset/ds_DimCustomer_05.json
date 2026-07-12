@@ -1,0 +1,16 @@
+{
+	"name": "ds_DimCustomer_05",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dimcustomer_scdtype1_05",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimCustomer"
+		}
+	}
+}

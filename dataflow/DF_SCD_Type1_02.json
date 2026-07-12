@@ -1,0 +1,49 @@
+{
+	"name": "DF_SCD_Type1_02",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_CustomerCSV_05",
+						"type": "DatasetReference"
+					},
+					"name": "srccustomercsv"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "srcdimcustomersqltable"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "lookupforcsvdimcustomer"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as string,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srccustomercsv",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcdimcustomersqltable",
+				"srccustomercsv, srcdimcustomersqltable lookup(CustomerID == ERROR_FUNCTION(''),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupforcsvdimcustomer"
+			]
+		}
+	}
+}
