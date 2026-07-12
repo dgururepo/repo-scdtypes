@@ -1,0 +1,32 @@
+{
+	"name": "DF_SCD_Type1_06",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_CustomerCSV_06",
+						"type": "DatasetReference"
+					},
+					"name": "srccustomercsv"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as string,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srccustomercsv"
+			]
+		}
+	}
+}
