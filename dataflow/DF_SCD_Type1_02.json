@@ -19,10 +19,40 @@
 					"name": "srcdimcustomersqltable"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
 			"transformations": [
 				{
 					"name": "lookupforcsvdimcustomer"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "alterRow2"
 				}
 			],
 			"scriptLines": [
@@ -35,14 +65,46 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> srccustomercsv",
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as decimal(10,2),",
+				"          LastUpdated as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> srcdimcustomersqltable",
-				"srccustomercsv, srcdimcustomersqltable lookup(CustomerID == ERROR_FUNCTION(''),",
+				"srccustomercsv, srcdimcustomersqltable lookup(toInteger(srccustomercsv@CustomerID) == srcdimcustomersqltable@CustomerID,",
 				"     multiple: false,",
 				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupforcsvdimcustomer"
+				"     broadcast: 'auto')~> lookupforcsvdimcustomer",
+				"lookupforcsvdimcustomer split(isMatch(),",
+				"     disjoint: false) ~> split1@(MatchedRows, NewRows)",
+				"split1@MatchedRows derive(LastUpdated = currentUTC()) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(true())) ~> alterRow1",
+				"split1@NewRows derive(LastUpdated = currentUTC()) ~> derivedColumn2",
+				"derivedColumn2 alterRow(insertIf(true())) ~> alterRow2",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"alterRow2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2"
 			]
 		}
 	}
