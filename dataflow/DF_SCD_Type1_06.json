@@ -9,14 +9,14 @@
 						"referenceName": "ds_CustomerCSV_06",
 						"type": "DatasetReference"
 					},
-					"name": "srccustomercsv06"
+					"name": "source1csv"
 				},
 				{
 					"dataset": {
 						"referenceName": "ds_DimCustomer_06",
 						"type": "DatasetReference"
 					},
-					"name": "dimcustomertable06"
+					"name": "source2dimcustomer"
 				}
 			],
 			"sinks": [
@@ -25,14 +25,14 @@
 						"referenceName": "ds_DimCustomer_06",
 						"type": "DatasetReference"
 					},
-					"name": "sinkforupdate"
+					"name": "sink1FromUpdate"
 				},
 				{
 					"dataset": {
 						"referenceName": "ds_DimCustomer_06",
 						"type": "DatasetReference"
 					},
-					"name": "sinkforinsert"
+					"name": "sink1FromInsert"
 				}
 			],
 			"transformations": [
@@ -43,16 +43,19 @@
 					"name": "split1"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "derivedColumn2Insert"
 				},
 				{
-					"name": "derivedColumn2"
+					"name": "derivedColumn3Unchanged"
 				},
 				{
-					"name": "alterRowforUpdate"
+					"name": "derivedColumn1Update"
 				},
 				{
-					"name": "alterRow1"
+					"name": "AlterRow1Update"
+				},
+				{
+					"name": "alterRow1Insert"
 				}
 			],
 			"scriptLines": [
@@ -66,7 +69,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> srccustomercsv06",
+				"     ignoreNoFilesFound: false) ~> source1csv",
 				"source(output(",
 				"          CustomerID as integer,",
 				"          FullName as string,",
@@ -79,18 +82,36 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> dimcustomertable06",
-				"srccustomercsv06, dimcustomertable06 lookup(srccustomercsv06@CustomerID == toString(dimcustomertable06@CustomerID),",
+				"     format: 'table') ~> source2dimcustomer",
+				"source1csv, source2dimcustomer lookup(source1csv@CustomerID == toString(source2dimcustomer@CustomerID),",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookup1",
-				"lookup1 split(srccustomercsv06@CustomerID==toString(dimcustomertable06@CustomerID),",
-				"     disjoint: false) ~> split1@(UpdateRows, NewRows)",
-				"split1@UpdateRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn1",
-				"split1@NewRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn2",
-				"derivedColumn1 alterRow(updateIf(true())) ~> alterRowforUpdate",
-				"derivedColumn2 alterRow(insertIf(true())) ~> alterRow1",
-				"alterRowforUpdate sink(allowSchemaDrift: true,",
+				"lookup1 split((source1csv@CustomerID==toString(source2dimcustomer@CustomerID)) &&\r",
+				"(\r",
+				"(source1csv@FullName!=source2dimcustomer@FullName)||\r",
+				"(source1csv@Email!=source2dimcustomer@Email)||\r",
+				"(source1csv@Phone!=source2dimcustomer@Phone)||\r",
+				"(source1csv@City!=source2dimcustomer@City)||\r",
+				"(source1csv@Segment!=source2dimcustomer@Segment)\r",
+				")\r",
+				"\r",
+				",",
+				"     isNull(source2dimcustomer@CustomerID),",
+				"     disjoint: false) ~> split1@(UpdateRows, InsertRows, UnchangedRows)",
+				"split1@InsertRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn2Insert",
+				"split1@UnchangedRows derive(LastUpdated = LastUpdated) ~> derivedColumn3Unchanged",
+				"split1@UpdateRows derive(LastUpdated = iif(\r",
+				"        ((split1@UpdateRows@FullName!=split1@UpdateRows@CustomerID)\r",
+				"            ||(split1@UpdateRows@Email!=split1@UpdateRows@Email)\r",
+				"            ||(split1@UpdateRows@Phone!=split1@UpdateRows@Phone)\r",
+				"            ||(split1@UpdateRows@City!=split1@UpdateRows@City)\r",
+				"            ||(split1@UpdateRows@Segment!=split1@UpdateRows@Segment))\r",
+				"    ,currentTimestamp(),LastUpdated\r",
+				"    )) ~> derivedColumn1Update",
+				"derivedColumn1Update alterRow(updateIf(true())) ~> AlterRow1Update",
+				"derivedColumn2Insert alterRow(insertIf(true())) ~> alterRow1Insert",
+				"AlterRow1Update sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:false,",
@@ -99,8 +120,8 @@
 				"     keys:['CustomerID'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sinkforupdate",
-				"alterRow1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1FromUpdate",
+				"alterRow1Insert sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -108,7 +129,7 @@
 				"     upsertable:false,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sinkforinsert"
+				"     skipDuplicateMapOutputs: true) ~> sink1FromInsert"
 			]
 		}
 	}
