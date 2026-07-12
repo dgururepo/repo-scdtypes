@@ -25,14 +25,14 @@
 						"referenceName": "ds_DimCustomer_05",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sinkfromUpdatedRows"
 				},
 				{
 					"dataset": {
 						"referenceName": "ds_DimCustomer_05",
 						"type": "DatasetReference"
 					},
-					"name": "sink2"
+					"name": "sinkfromNewRows"
 				}
 			],
 			"transformations": [
@@ -46,13 +46,13 @@
 					"name": "derivedColumn1"
 				},
 				{
-					"name": "alterRow1"
+					"name": "Updaterow"
 				},
 				{
 					"name": "derivedColumn2"
 				},
 				{
-					"name": "alterRow2"
+					"name": "InsertRow"
 				}
 			],
 			"scriptLines": [
@@ -83,10 +83,10 @@
 				"lookupforcsvdimcustomer split(isMatch(),",
 				"     disjoint: false) ~> split1@(MatchedRows, NewRows)",
 				"split1@MatchedRows derive(LastUpdated = currentUTC()) ~> derivedColumn1",
-				"derivedColumn1 alterRow(updateIf(true())) ~> alterRow1",
+				"derivedColumn1 alterRow(updateIf(true())) ~> Updaterow",
 				"split1@NewRows derive(LastUpdated = currentUTC()) ~> derivedColumn2",
-				"derivedColumn2 alterRow(insertIf(true())) ~> alterRow2",
-				"alterRow1 sink(allowSchemaDrift: true,",
+				"derivedColumn2 alterRow(insertIf(true())) ~> InsertRow",
+				"Updaterow sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:false,",
@@ -95,8 +95,8 @@
 				"     keys:['CustomerID'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1",
-				"alterRow2 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkfromUpdatedRows",
+				"InsertRow sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -104,7 +104,7 @@
 				"     upsertable:false,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2"
+				"     skipDuplicateMapOutputs: true) ~> sinkfromNewRows"
 			]
 		}
 	}
