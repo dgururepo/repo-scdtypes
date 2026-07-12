@@ -1,9 +1,9 @@
 {
-	"name": "pl_scdtype1",
+	"name": "pl_scdtype1_05",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "dfscdtype1_05",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
