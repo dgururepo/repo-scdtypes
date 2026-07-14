@@ -1,0 +1,16 @@
+{
+	"name": "ds_stage_sql_08",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_sql_08",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "stage",
+			"table": "Customer_Stage"
+		}
+	}
+}
