@@ -10,10 +10,6 @@
 				"type": "string",
 				"defaultValue": "input"
 			},
-			"pFolder": {
-				"type": "string",
-				"defaultValue": "customers"
-			},
 			"pDirectory": {
 				"type": "string",
 				"defaultValue": "daily"
