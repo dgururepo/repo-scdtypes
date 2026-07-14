@@ -1,0 +1,46 @@
+{
+	"name": "ds_config_sql_08",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_sql_08",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ConfigID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SourceContainer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FolderName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DirectoryName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FileName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryKeyColumn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Status",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "config",
+			"table": "Pipeline_Config"
+		}
+	}
+}
