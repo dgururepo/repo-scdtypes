@@ -52,7 +52,7 @@
 					"name": "jnSCD1"
 				},
 				{
-					"name": "drvSCDFlags"
+					"name": "drvSCDFlagsisNew"
 				}
 			],
 			"scriptLines": [
@@ -102,7 +102,18 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> jnSCD1",
-				"jnSCD1 derive(isNew = isNull(srcDimCustomer@CustomerID)) ~> drvSCDFlags",
+				"jnSCD1 derive(isNew = isNull(srcDimCustomer@CustomerID),",
+				"          isChanged = !isNull(srcDimCustomer@CustomerID) &&  ( coalesce(drvClean@FullName,'') != coalesce(srcDimCustomer@FullName,'')  || coalesce(drvClean@Email,'') != coalesce(srcDimCustomer@Email,'')   || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')   || coalesce(drvClean@City,'') != coalesce(srcDimCustomer@City,'')   || coalesce(drvClean@Segment,'') != coalesce(srcDimCustomer@Segment,'')  ),",
+				"          isUnchanged = !isNull(srcDimCustomer@CustomerID) &&  !( coalesce(drvClean@FullName,'') != coalesce(srcDimCustomer@FullName,'')  || coalesce(drvClean@Email,'') != coalesce(srcDimCustomer@Email,'')   || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')   || coalesce(drvClean@City,'') != coalesce(srcDimCustomer@City,'')   || coalesce(drvClean@Segment,'') != coalesce(srcDimCustomer@Segment,'')  ),",
+				"          LastUpdated = iif((isNull(srcDimCustomer@CustomerID)) || (!isNull(srcDimCustomer@CustomerID) && \r",
+				"(\r",
+				"coalesce(drvClean@FullName,'') != coalesce(srcDimCustomer@FullName,'')\r",
+				" || coalesce(drvClean@Email,'') != coalesce(srcDimCustomer@Email,'') \r",
+				" || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'') \r",
+				" || coalesce(drvClean@City,'') != coalesce(srcDimCustomer@City,'') \r",
+				" || coalesce(drvClean@Segment,'') != coalesce(srcDimCustomer@Segment,'')\r",
+				" )), currentTimestamp(), \r",
+				" LastUpdated)) ~> drvSCDFlagsisNew",
 				"drvStage sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
