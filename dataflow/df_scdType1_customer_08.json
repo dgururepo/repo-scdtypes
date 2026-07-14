@@ -47,6 +47,12 @@
 				},
 				{
 					"name": "drvStage"
+				},
+				{
+					"name": "jnSCD1"
+				},
+				{
+					"name": "drvSCDFlags"
 				}
 			],
 			"scriptLines": [
@@ -72,7 +78,8 @@
 				"          Country as string,",
 				"          Region as string,",
 				"          EmailDomain as string,",
-				"          LoadDate as timestamp",
+				"          LastUpdated as timestamp,",
+				"          CreatedDate as timestamp",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -90,6 +97,12 @@
 				"drvClean filter(!isNull(CustomerID) && !isNull(FullName) && length(Email) > 0) ~> fltValidRows",
 				"fltValidRows derive(Region = case(Country == 'India', 'APAC', Country == 'USA' || Country == 'Canada', 'AMER', Country == 'UK', 'EMEA', 'OTHER'),",
 				"          EmailDomain = split(Email,'@')[2]) ~> drvStage",
+				"drvStage, srcDimCustomer join(drvClean@CustomerID == srcDimCustomer@CustomerID,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> jnSCD1",
+				"jnSCD1 derive(isNew = isNull(srcDimCustomer@CustomerID)) ~> drvSCDFlags",
 				"drvStage sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
