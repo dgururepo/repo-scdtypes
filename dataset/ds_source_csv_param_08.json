@@ -28,8 +28,16 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().pFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().pDirectory",
+					"type": "Expression"
+				},
 				"fileSystem": {
-					"value": "@concat(dataset().pContainer,'/',dataset().pFolder,'/',dataset().pDirectory,'/',dataset().pFileName)",
+					"value": "@concat(dataset().pContainer,'/',dataset().pFolder)",
 					"type": "Expression"
 				}
 			},
