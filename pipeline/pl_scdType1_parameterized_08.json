@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lkpConfig').output.value",
+						"value": "@activity('lkpConfig').output.firstRow",
 						"type": "Expression"
 					},
 					"isSequential": true,
