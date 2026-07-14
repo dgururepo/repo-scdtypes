@@ -33,7 +33,7 @@
 					"type": "Expression"
 				},
 				"fileSystem": {
-					"value": "@concat(dataset().pContainer,'/',dataset().pFolder)",
+					"value": "@dataset().pContainer",
 					"type": "Expression"
 				}
 			},
