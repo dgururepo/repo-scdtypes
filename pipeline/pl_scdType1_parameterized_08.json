@@ -1,6 +1,32 @@
 {
-	"name": "pl_scdType1_customer_08",
+	"name": "pl_scdType1_parameterized_08",
 	"properties": {
+		"activities": [
+			{
+				"name": "lkpConfig",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_config_sql_08",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
 		"annotations": []
 	}
 }
