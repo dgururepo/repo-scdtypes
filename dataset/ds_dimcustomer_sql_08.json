@@ -9,8 +9,8 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "stage",
-			"table": "Customer_Stage"
+			"schema": "dbo",
+			"table": "DimCustomer"
 		}
 	}
 }

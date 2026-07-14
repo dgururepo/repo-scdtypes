@@ -10,14 +10,118 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dimcustomer_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "srcDimCustomer"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_raw_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "sinkRaw"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_stage_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "sinkStage"
+				}
+			],
+			"transformations": [
+				{
+					"name": "drvRawAudit"
+				},
+				{
+					"name": "drvClean"
+				},
+				{
+					"name": "fltValidRows"
+				},
+				{
+					"name": "drvStage"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          CustomerID as short,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string,",
+				"          Country as string,",
+				"          Region as string,",
+				"          EmailDomain as string,",
+				"          LoadDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcDimCustomer",
+				"source1 derive(LoadDate = currentTimestamp()) ~> drvRawAudit",
+				"drvRawAudit derive(CustomerID = toInteger(CustomerID),",
+				"          FullName = trim(FullName),",
+				"          Email = lower(trim(Email)),",
+				"          Phone = regexReplace(Phone, '[^0-9]', ''),",
+				"          City = initCap(trim(City)),",
+				"          Segment = upper(trim(Segment)),",
+				"          Country = trim(Country),",
+				"          LoadDate = currentTimestamp()) ~> drvClean",
+				"drvClean filter(!isNull(CustomerID) && !isNull(FullName) && length(Email) > 0) ~> fltValidRows",
+				"fltValidRows derive(Region = case(Country == 'India', 'APAC', Country == 'USA' || Country == 'Canada', 'AMER', Country == 'UK', 'EMEA', 'OTHER'),",
+				"          EmailDomain = split(Email,'@')[2]) ~> drvStage",
+				"drvStage sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkRaw",
+				"drvStage sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          CustomerID,",
+				"          FullName,",
+				"          Email,",
+				"          Phone,",
+				"          City,",
+				"          Segment,",
+				"          Country,",
+				"          Region,",
+				"          EmailDomain,",
+				"          LoadDate",
+				"     )) ~> sinkStage"
 			]
 		}
 	}
