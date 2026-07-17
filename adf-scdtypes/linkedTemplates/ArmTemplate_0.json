@@ -6,6 +6,150 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-scdtypes"
+		},
+		"ls_CustomerCSV_06_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_06'"
+		},
+		"ls_CustomerCSV_07_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_07'"
+		},
+		"ls_DimCustomer_06_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_06'"
+		},
+		"ls_DimCustomer_07_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_07'"
+		},
+		"ls_adls_gen2_08_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_gen2_08'"
+		},
+		"ls_azure_sql_08_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azure_sql_08'"
+		},
+		"ls_dim_sqltable_scd1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dim_sqltable_scd1'"
+		},
+		"ls_dimcustomer_scdtype1_05_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dimcustomer_scdtype1_05'"
+		},
+		"ls_existingdim_scd1_sqltable_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_existingdim_scd1_sqltable'"
+		},
+		"ls_source_scd1_excel_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_source_scd1_excel'"
+		},
+		"ls_sourceexcel_scd1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_sourceexcel_scd1'"
+		},
+		"ls_src_csvfile_scdtype1_05_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_src_csvfile_scdtype1_05'"
+		},
+		"ls_CustomerCSV_06_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_CustomerCSV_07_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDatabase"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_adls_gen2_08_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://srinistgadlsgen2.dfs.core.windows.net/"
+		},
+		"ls_azure_sql_08_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_azure_sql_08_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_azure_sql_08_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "SrinivasPracticeDB"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "srinivas"
+		},
+		"ls_source_scd1_excel_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_sourceexcel_scd1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_src_csvfile_scdtype1_05_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -34,6 +178,457 @@
 				"annotations": []
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_CustomerCSV_06')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_CustomerCSV_06_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_CustomerCSV_06_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_CustomerCSV_07')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_CustomerCSV_07_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_CustomerCSV_07_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_DimCustomer_06')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_DimCustomer_06_properties_typeProperties_server')]",
+					"database": "[parameters('ls_DimCustomer_06_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_DimCustomer_06_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_DimCustomer_06_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_DimCustomer_07')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_DimCustomer_07_properties_typeProperties_server')]",
+					"database": "[parameters('ls_DimCustomer_07_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_DimCustomer_07_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_DimCustomer_07_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_adls_gen2_08')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_adls_gen2_08_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_adls_gen2_08_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_azure_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_azure_sql_08_properties_typeProperties_server')]",
+					"database": "[parameters('ls_azure_sql_08_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_azure_sql_08_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_azure_sql_08_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_dim_sqltable_scd1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_server')]",
+					"database": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_dim_sqltable_scd1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_dimcustomer_scdtype1_05')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_server')]",
+					"database": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_existingdim_scd1_sqltable')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_server')]",
+					"database": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_existingdim_scd1_sqltable_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_source_scd1_excel')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_source_scd1_excel_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_source_scd1_excel_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_sourceexcel_scd1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_sourceexcel_scd1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_sourceexcel_scd1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_src_csvfile_scdtype1_05')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_src_csvfile_scdtype1_05_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_src_csvfile_scdtype1_05_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_05')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_src_csvfile_scdtype1_05",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day1.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "CustomerID",
+						"type": "String"
+					},
+					{
+						"name": "CustomerName",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Salary",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_src_csvfile_scdtype1_05')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_06')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_CustomerCSV_06",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day2.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "CustomerID",
+						"type": "String"
+					},
+					{
+						"name": "FullName",
+						"type": "String"
+					},
+					{
+						"name": "Email",
+						"type": "String"
+					},
+					{
+						"name": "Phone",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Segment",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_CustomerCSV_06')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_07')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_CustomerCSV_07",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day1.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_CustomerCSV_07')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_DimCustomer_05')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_dimcustomer_scdtype1_05",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_dimcustomer_scdtype1_05')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_DimCustomer_06')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_DimCustomer_06",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_DimCustomer_06')]"
+			]
 		}
 	]
 }
