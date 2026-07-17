@@ -1,0 +1,125 @@
+{
+	"name": "DF_SCD_Type1_07",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_CustomerCSV_07",
+						"type": "DatasetReference"
+					},
+					"name": "source1csvfile"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_07",
+						"type": "DatasetReference"
+					},
+					"name": "source1sqltable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_07",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_07",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "derivedColumn1Update"
+				},
+				{
+					"name": "derivedColumn1Insert"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1Update"
+				},
+				{
+					"name": "alterRow1Insert"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as integer,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1csvfile",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as decimal(10,2),",
+				"          LastUpdated as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1sqltable",
+				"source1csvfile, source1sqltable lookup(source1csvfile@CustomerID == source1sqltable@CustomerID,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 split((\r",
+				"    (source1csvfile@CustomerID==source1sqltable@CustomerID)&&\r",
+				"    (\r",
+				"       (source1csvfile@CustomerName!=source1sqltable@CustomerName)||\r",
+				"         (source1csvfile@City!=source1sqltable@City)||\r",
+				"       (source1csvfile@Salary!=source1sqltable@Salary)   \r",
+				"    )\r",
+				"\r",
+				"    )\r",
+				",",
+				"     isNull(source1sqltable@CustomerID),",
+				"     disjoint: false) ~> split1@(UpdateRows, NewRows, Unchanged)",
+				"split1@UpdateRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn1Update",
+				"split1@NewRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn1Insert",
+				"split1@Unchanged derive(LastUpdated = LastUpdated) ~> derivedColumn1",
+				"derivedColumn1Update alterRow(updateIf(true())) ~> alterRow1Update",
+				"derivedColumn1Insert alterRow(insertIf(true())) ~> alterRow1Insert",
+				"alterRow1Update sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"alterRow1Insert sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2"
+			]
+		}
+	}
+}

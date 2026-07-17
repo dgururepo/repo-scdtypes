@@ -1,0 +1,47 @@
+{
+	"name": "ds_source_csv_param_08",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_gen2_08",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pContainer": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"pDirectory": {
+				"type": "string",
+				"defaultValue": "daily"
+			},
+			"pFileName": {
+				"type": "string",
+				"defaultValue": "scd1_customer_source_day2-params.csv"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().pFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().pDirectory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().pContainer",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

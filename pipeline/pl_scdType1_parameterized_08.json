@@ -1,0 +1,96 @@
+{
+	"name": "pl_scdType1_parameterized_08",
+	"properties": {
+		"activities": [
+			{
+				"name": "lkpConfig",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT * FROM config.Pipeline_Config WHERE Status = 'Active'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_config_sql_08",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "forEachConfig",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "lkpConfig",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('lkpConfig').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "dfSCD1Customer",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "df_scdType1_customer_08",
+									"type": "DataFlowReference",
+									"datasetParameters": {
+										"source1": {
+											"pContainer": {
+												"value": "@item().SourceContainer",
+												"type": "Expression"
+											},
+											"pDirectory": {
+												"value": "@item().DirectoryName",
+												"type": "Expression"
+											},
+											"pFileName": {
+												"value": "@item().FileName",
+												"type": "Expression"
+											}
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}

@@ -1,0 +1,111 @@
+{
+	"name": "DF_SCD_Type1_02",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_CustomerCSV_05",
+						"type": "DatasetReference"
+					},
+					"name": "srccustomercsv"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "srcdimcustomersqltable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "sinkfromUpdatedRows"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_05",
+						"type": "DatasetReference"
+					},
+					"name": "sinkfromNewRows"
+				}
+			],
+			"transformations": [
+				{
+					"name": "lookupforcsvdimcustomer"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "Updaterow"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "InsertRow"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as string,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srccustomercsv",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          CustomerName as string,",
+				"          City as string,",
+				"          Salary as decimal(10,2),",
+				"          LastUpdated as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcdimcustomersqltable",
+				"srccustomercsv, srcdimcustomersqltable lookup(toInteger(srccustomercsv@CustomerID) == srcdimcustomersqltable@CustomerID,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupforcsvdimcustomer",
+				"lookupforcsvdimcustomer split(isMatch(),",
+				"     disjoint: false) ~> split1@(MatchedRows, NewRows)",
+				"split1@MatchedRows derive(LastUpdated = currentUTC()) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(true())) ~> Updaterow",
+				"split1@NewRows derive(LastUpdated = currentUTC()) ~> derivedColumn2",
+				"derivedColumn2 alterRow(insertIf(true())) ~> InsertRow",
+				"Updaterow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkfromUpdatedRows",
+				"InsertRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkfromNewRows"
+			]
+		}
+	}
+}

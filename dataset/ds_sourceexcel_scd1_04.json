@@ -1,0 +1,22 @@
+{
+	"name": "ds_sourceexcel_scd1_04",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sourceexcel_scd1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Customer_SCD1.xlsx",
+				"folderPath": "scd-type1",
+				"fileSystem": "scd"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,80 @@
+{
+	"name": "DF_SCD_Type1_01",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_sourceexcel_scd1_04",
+						"type": "DatasetReference"
+					},
+					"name": "srcexcel"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dim_sqltable_scd1_04",
+						"type": "DatasetReference"
+					},
+					"name": "srcDimsqltable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dim_sqltable_scd1_04",
+						"type": "DatasetReference"
+					},
+					"name": "DimCustomerType1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as short,",
+				"          Address as string,",
+				"          City as string,",
+				"          Phone as long",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srcexcel",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          Address as string,",
+				"          City as string,",
+				"          Phone as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcDimsqltable",
+				"srcexcel, srcDimsqltable join(srcexcel@CustomerID == srcDimsqltable@CustomerID,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 alterRow(insertIf(true()),",
+				"     updateIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     preSQLs:['truncate table dbo.Customers_scd'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
+			]
+		}
+	}
+}

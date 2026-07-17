@@ -1,0 +1,136 @@
+{
+	"name": "DF_SCD_Type1_06",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_CustomerCSV_06",
+						"type": "DatasetReference"
+					},
+					"name": "source1csv"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_06",
+						"type": "DatasetReference"
+					},
+					"name": "source2dimcustomer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_06",
+						"type": "DatasetReference"
+					},
+					"name": "sink1FromUpdate"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_DimCustomer_06",
+						"type": "DatasetReference"
+					},
+					"name": "sink1FromInsert"
+				}
+			],
+			"transformations": [
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "derivedColumn2Insert"
+				},
+				{
+					"name": "derivedColumn3Unchanged"
+				},
+				{
+					"name": "derivedColumn1Update"
+				},
+				{
+					"name": "AlterRow1Update"
+				},
+				{
+					"name": "alterRow1Insert"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as string,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1csv",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string,",
+				"          LastUpdated as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2dimcustomer",
+				"source1csv, source2dimcustomer lookup(source1csv@CustomerID == toString(source2dimcustomer@CustomerID),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 split((source1csv@CustomerID==toString(source2dimcustomer@CustomerID)) &&\r",
+				"(\r",
+				"(source1csv@FullName!=source2dimcustomer@FullName)||\r",
+				"(source1csv@Email!=source2dimcustomer@Email)||\r",
+				"(source1csv@Phone!=source2dimcustomer@Phone)||\r",
+				"(source1csv@City!=source2dimcustomer@City)||\r",
+				"(source1csv@Segment!=source2dimcustomer@Segment)\r",
+				")\r",
+				"\r",
+				",",
+				"     isNull(source2dimcustomer@CustomerID),",
+				"     disjoint: false) ~> split1@(UpdateRows, InsertRows, UnchangedRows)",
+				"split1@InsertRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn2Insert",
+				"split1@UnchangedRows derive(LastUpdated = LastUpdated) ~> derivedColumn3Unchanged",
+				"split1@UpdateRows derive(LastUpdated = iif(\r",
+				"        ((split1@UpdateRows@FullName!=split1@UpdateRows@CustomerID)\r",
+				"            ||(split1@UpdateRows@Email!=split1@UpdateRows@Email)\r",
+				"            ||(split1@UpdateRows@Phone!=split1@UpdateRows@Phone)\r",
+				"            ||(split1@UpdateRows@City!=split1@UpdateRows@City)\r",
+				"            ||(split1@UpdateRows@Segment!=split1@UpdateRows@Segment))\r",
+				"    ,currentTimestamp(),LastUpdated\r",
+				"    )) ~> derivedColumn1Update",
+				"derivedColumn1Update alterRow(updateIf(true())) ~> AlterRow1Update",
+				"derivedColumn2Insert alterRow(insertIf(true())) ~> alterRow1Insert",
+				"AlterRow1Update sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1FromUpdate",
+				"alterRow1Insert sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1FromInsert"
+			]
+		}
+	}
+}

@@ -1,0 +1,237 @@
+{
+	"name": "df_scdType1_customer_08",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_source_csv_param_08",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dimcustomer_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "srcDimCustomer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_raw_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "sinkRaw"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_stage_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "sinkStage"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dimcustomer_sql_08",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDimCustomer"
+				}
+			],
+			"transformations": [
+				{
+					"name": "drvRawAudit"
+				},
+				{
+					"name": "drvClean"
+				},
+				{
+					"name": "fltValidRows"
+				},
+				{
+					"name": "drvStage"
+				},
+				{
+					"name": "jnSCD1"
+				},
+				{
+					"name": "drvSCDFlags"
+				},
+				{
+					"name": "alterRowSCD1"
+				},
+				{
+					"name": "selFinalCols"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CustomerID as short,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          CustomerID as integer,",
+				"          FullName as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          City as string,",
+				"          Segment as string,",
+				"          Country as string,",
+				"          Region as string,",
+				"          EmailDomain as string,",
+				"          LastUpdated as timestamp,",
+				"          CreatedDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> srcDimCustomer",
+				"source1 derive(LoadDate = currentTimestamp()) ~> drvRawAudit",
+				"drvRawAudit derive(CustomerID = toInteger(CustomerID),",
+				"          FullName = trim(FullName),",
+				"          Email = lower(trim(Email)),",
+				"          Phone = regexReplace(Phone, '[^0-9]', ''),",
+				"          City = initCap(trim(City)),",
+				"          Segment = upper(trim(Segment)),",
+				"          Country = trim(Country),",
+				"          LoadDate = currentTimestamp()) ~> drvClean",
+				"drvClean filter(!isNull(CustomerID) && !isNull(FullName) && length(Email) > 0) ~> fltValidRows",
+				"fltValidRows derive(Region = case(Country == 'India', 'APAC', Country == 'USA' || Country == 'Canada', 'AMER', Country == 'UK', 'EMEA', 'OTHER'),",
+				"          EmailDomain = split(Email,'@')[2]) ~> drvStage",
+				"drvStage, srcDimCustomer join(drvClean@CustomerID == srcDimCustomer@CustomerID,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> jnSCD1",
+				"jnSCD1 derive(isNew = isNull(srcDimCustomer@CustomerID),",
+				"          isChanged = !isNull(srcDimCustomer@CustomerID)\r",
+				"\r",
+				"&& \r",
+				"(\r",
+				"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+				"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+				"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+				"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+				"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+				"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+				"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+				"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+				"    \r",
+				")\r",
+				"\r",
+				"\r",
+				",",
+				"          isUnchanged = !isNull(srcDimCustomer@CustomerID)\r",
+				"&& \r",
+				"!(\r",
+				"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+				"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+				"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+				"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+				"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+				"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+				"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+				"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+				"),",
+				"          LastUpdated = iif( \r",
+				"    \r",
+				"( !isNull(drvClean@CustomerID) || isNull(drvClean@CustomerID)) &&\r",
+				"(\r",
+				"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+				"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+				"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+				"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+				"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+				"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+				"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+				"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+				" ), currentTimestamp(), \r",
+				" LastUpdated)) ~> drvSCDFlags",
+				"drvSCDFlags alterRow(insertIf(isNew==true()),",
+				"     upsertIf(isChanged==true())) ~> alterRowSCD1",
+				"alterRowSCD1 select(mapColumn(",
+				"          CustomerID = drvClean@CustomerID,",
+				"          FullName = drvClean@FullName,",
+				"          Email = drvClean@Email,",
+				"          Phone = drvClean@Phone,",
+				"          City = drvClean@City,",
+				"          Segment = drvClean@Segment,",
+				"          Country = drvClean@Country,",
+				"          LoadDate,",
+				"          Region = drvStage@Region,",
+				"          EmailDomain = drvStage@EmailDomain,",
+				"          CustomerID = srcDimCustomer@CustomerID,",
+				"          FullName = srcDimCustomer@FullName,",
+				"          Email = srcDimCustomer@Email,",
+				"          Phone = srcDimCustomer@Phone,",
+				"          City = srcDimCustomer@City,",
+				"          Segment = srcDimCustomer@Segment,",
+				"          Country = srcDimCustomer@Country,",
+				"          Region = srcDimCustomer@Region,",
+				"          EmailDomain = srcDimCustomer@EmailDomain,",
+				"          LastUpdated,",
+				"          CreatedDate,",
+				"          isNew,",
+				"          isChanged,",
+				"          isUnchanged",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selFinalCols",
+				"drvStage sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkRaw",
+				"drvStage sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          CustomerID,",
+				"          FullName,",
+				"          Email,",
+				"          Phone,",
+				"          City,",
+				"          Segment,",
+				"          Country,",
+				"          Region,",
+				"          EmailDomain,",
+				"          LoadDate",
+				"     )) ~> sinkStage",
+				"selFinalCols sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['CustomerID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDimCustomer"
+			]
+		}
+	}
+}
