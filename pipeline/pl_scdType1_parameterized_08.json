@@ -24,7 +24,8 @@
 					"dataset": {
 						"referenceName": "ds_config_sql_08",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -41,13 +42,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lkpConfig').output.firstRow",
+						"value": "@activity('lkpConfig').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Data flow1",
+							"name": "dfSCD1Customer",
 							"type": "ExecuteDataFlow",
 							"dependsOn": [],
 							"policy": {
