@@ -69,6 +69,9 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "FilterisUnchangedRecords"
 				}
 			],
 			"scriptLines": [
@@ -145,7 +148,7 @@
 				"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
 				"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
 				")) ~> drvSCDFlags",
-				"derivedColumn1 alterRow(insertIf(isNew==true()),",
+				"FilterisUnchangedRecords alterRow(insertIf(isNew==true()),",
 				"     updateIf(isChanged==true())) ~> alterRowSCD1",
 				"alterRowSCD1 select(mapColumn(",
 				"          CustomerID = drvClean@CustomerID,",
@@ -176,9 +179,10 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selFinalCols",
 				"drvSCDFlags derive(LastUpdated = case( \r",
-				"   (isNew==true() || isChanged==true()) && isUnchanged==false()\r",
+				"   (isNew==true() || isChanged==true())\r",
 				"        ,currentTimestamp()\r",
 				")) ~> derivedColumn1",
+				"derivedColumn1 filter(isNew || isChanged) ~> FilterisUnchangedRecords",
 				"drvStage sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
