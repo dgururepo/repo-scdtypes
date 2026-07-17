@@ -6,6 +6,150 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-scdtypes"
+		},
+		"ls_CustomerCSV_06_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_06'"
+		},
+		"ls_CustomerCSV_07_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_07'"
+		},
+		"ls_DimCustomer_06_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_06'"
+		},
+		"ls_DimCustomer_07_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_07'"
+		},
+		"ls_adls_gen2_08_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_gen2_08'"
+		},
+		"ls_azure_sql_08_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azure_sql_08'"
+		},
+		"ls_dim_sqltable_scd1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dim_sqltable_scd1'"
+		},
+		"ls_dimcustomer_scdtype1_05_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dimcustomer_scdtype1_05'"
+		},
+		"ls_existingdim_scd1_sqltable_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_existingdim_scd1_sqltable'"
+		},
+		"ls_source_scd1_excel_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_source_scd1_excel'"
+		},
+		"ls_sourceexcel_scd1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_sourceexcel_scd1'"
+		},
+		"ls_src_csvfile_scdtype1_05_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_src_csvfile_scdtype1_05'"
+		},
+		"ls_CustomerCSV_06_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_CustomerCSV_07_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDatabase"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_adls_gen2_08_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://srinistgadlsgen2.dfs.core.windows.net/"
+		},
+		"ls_azure_sql_08_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_azure_sql_08_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_azure_sql_08_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "SrinivasPracticeDB"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "srinivas"
+		},
+		"ls_source_scd1_excel_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_sourceexcel_scd1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_src_csvfile_scdtype1_05_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -34,6 +178,1711 @@
 				"annotations": []
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_scdType1_parameterized_08')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "lkpConfig",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"sqlReaderQuery": "SELECT * FROM config.Pipeline_Config WHERE Status = 'Active'",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "ds_config_sql_08",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "forEachConfig",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "lkpConfig",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('lkpConfig').output.value",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "dfSCD1Customer",
+									"type": "ExecuteDataFlow",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataflow": {
+											"referenceName": "df_scdType1_customer_08",
+											"type": "DataFlowReference",
+											"parameters": {},
+											"datasetParameters": {
+												"source1": {
+													"pContainer": {
+														"value": "@item().SourceContainer",
+														"type": "Expression"
+													},
+													"pDirectory": {
+														"value": "@item().DirectoryName",
+														"type": "Expression"
+													},
+													"pFileName": {
+														"value": "@item().FileName",
+														"type": "Expression"
+													}
+												},
+												"srcDimCustomer": {},
+												"sinkRaw": {},
+												"sinkStage": {},
+												"sinkDimCustomer": {}
+											}
+										},
+										"staging": {},
+										"compute": {
+											"coreCount": 8,
+											"computeType": "General"
+										},
+										"traceLevel": "Fine"
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_config_sql_08')]",
+				"[concat(variables('factoryId'), '/dataflows/df_scdType1_customer_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_scdtype1_04')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dfscdtype1",
+						"description": "dfscdtype1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_SCD_Type1_01",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"srcexcel": {},
+									"srcDimsqltable": {},
+									"DimCustomerType1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_SCD_Type1_01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_scdtype1_05')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dfscdtype1_05",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_SCD_Type1_02",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"srccustomercsv": {},
+									"srcdimcustomersqltable": {},
+									"sinkfromUpdatedRows": {},
+									"sinkfromNewRows": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_SCD_Type1_02')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_scdtype1_06')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Data flow06",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_SCD_Type1_06",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1csv": {},
+									"source2dimcustomer": {},
+									"sink1FromUpdate": {},
+									"sink1FromInsert": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_SCD_Type1_06')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_scdtype1_07')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Data flow07",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_SCD_Type1_07",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1csvfile": {},
+									"source1sqltable": {},
+									"sink1": {},
+									"sink2": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_SCD_Type1_07')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_05')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_src_csvfile_scdtype1_05",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day1.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "CustomerID",
+						"type": "String"
+					},
+					{
+						"name": "CustomerName",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Salary",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_src_csvfile_scdtype1_05')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_06')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_CustomerCSV_06",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day2.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "CustomerID",
+						"type": "String"
+					},
+					{
+						"name": "FullName",
+						"type": "String"
+					},
+					{
+						"name": "Email",
+						"type": "String"
+					},
+					{
+						"name": "Phone",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Segment",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_CustomerCSV_06')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_CustomerCSV_07')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_CustomerCSV_07",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "scd1_customer_source_day1.csv",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_CustomerCSV_07')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_DimCustomer_05')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_dimcustomer_scdtype1_05",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_dimcustomer_scdtype1_05')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_DimCustomer_06')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_DimCustomer_06",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_DimCustomer_06')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_DimCustomer_07')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_DimCustomer_07",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_DimCustomer_07')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_config_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azure_sql_08",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "ConfigID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "SourceContainer",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FolderName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DirectoryName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PrimaryKeyColumn",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Status",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "config",
+					"table": "Pipeline_Config"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sql_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_dim_sqltable_scd1_04')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_dim_sqltable_scd1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Customers_scd"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_dim_sqltable_scd1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_dimcustomer_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azure_sql_08",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "DimCustomer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sql_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_raw_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azure_sql_08",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "raw",
+					"table": "Customer_Raw"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sql_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_source_csv_param_08')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_gen2_08",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"pContainer": {
+						"type": "string",
+						"defaultValue": "input"
+					},
+					"pDirectory": {
+						"type": "string",
+						"defaultValue": "daily"
+					},
+					"pFileName": {
+						"type": "string",
+						"defaultValue": "scd1_customer_source_day2-params.csv"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().pFileName",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().pDirectory",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().pContainer",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_gen2_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sourceexcel_scd1_04')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sourceexcel_scd1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "Customer_SCD1.xlsx",
+						"folderPath": "scd-type1",
+						"fileSystem": "scd"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sourceexcel_scd1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_stage_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azure_sql_08",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "stage",
+					"table": "Customer_Stage"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sql_08')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_CustomerCSV_06')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_CustomerCSV_06_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_CustomerCSV_06_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_CustomerCSV_07')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_CustomerCSV_07_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_CustomerCSV_07_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_DimCustomer_06')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_DimCustomer_06_properties_typeProperties_server')]",
+					"database": "[parameters('ls_DimCustomer_06_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_DimCustomer_06_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_DimCustomer_06_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_DimCustomer_07')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_DimCustomer_07_properties_typeProperties_server')]",
+					"database": "[parameters('ls_DimCustomer_07_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_DimCustomer_07_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_DimCustomer_07_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_adls_gen2_08')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_adls_gen2_08_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_adls_gen2_08_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_azure_sql_08')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_azure_sql_08_properties_typeProperties_server')]",
+					"database": "[parameters('ls_azure_sql_08_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_azure_sql_08_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_azure_sql_08_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_dim_sqltable_scd1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_server')]",
+					"database": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_dim_sqltable_scd1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_dimcustomer_scdtype1_05')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_server')]",
+					"database": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_existingdim_scd1_sqltable')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_server')]",
+					"database": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_existingdim_scd1_sqltable_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_source_scd1_excel')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_source_scd1_excel_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_source_scd1_excel_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_sourceexcel_scd1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_sourceexcel_scd1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_sourceexcel_scd1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_src_csvfile_scdtype1_05')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_src_csvfile_scdtype1_05_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_src_csvfile_scdtype1_05_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_SCD_Type1_01')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_sourceexcel_scd1_04",
+								"type": "DatasetReference"
+							},
+							"name": "srcexcel"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_dim_sqltable_scd1_04",
+								"type": "DatasetReference"
+							},
+							"name": "srcDimsqltable"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_dim_sqltable_scd1_04",
+								"type": "DatasetReference"
+							},
+							"name": "DimCustomerType1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "join1"
+						},
+						{
+							"name": "alterRow1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          CustomerID as short,",
+						"          Address as string,",
+						"          City as string,",
+						"          Phone as long",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> srcexcel",
+						"source(output(",
+						"          CustomerID as integer,",
+						"          Address as string,",
+						"          City as string,",
+						"          Phone as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> srcDimsqltable",
+						"srcexcel, srcDimsqltable join(srcexcel@CustomerID == srcDimsqltable@CustomerID,",
+						"     joinType:'left',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> join1",
+						"join1 alterRow(insertIf(true()),",
+						"     updateIf(true())) ~> alterRow1",
+						"alterRow1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:true,",
+						"     upsertable:false,",
+						"     keys:['CustomerID'],",
+						"     format: 'table',",
+						"     preSQLs:['truncate table dbo.Customers_scd'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> DimCustomerType1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_sourceexcel_scd1_04')]",
+				"[concat(variables('factoryId'), '/datasets/ds_dim_sqltable_scd1_04')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_SCD_Type1_02')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_CustomerCSV_05",
+								"type": "DatasetReference"
+							},
+							"name": "srccustomercsv"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_05",
+								"type": "DatasetReference"
+							},
+							"name": "srcdimcustomersqltable"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_05",
+								"type": "DatasetReference"
+							},
+							"name": "sinkfromUpdatedRows"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_05",
+								"type": "DatasetReference"
+							},
+							"name": "sinkfromNewRows"
+						}
+					],
+					"transformations": [
+						{
+							"name": "lookupforcsvdimcustomer"
+						},
+						{
+							"name": "split1"
+						},
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "Updaterow"
+						},
+						{
+							"name": "derivedColumn2"
+						},
+						{
+							"name": "InsertRow"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          CustomerID as string,",
+						"          CustomerName as string,",
+						"          City as string,",
+						"          Salary as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> srccustomercsv",
+						"source(output(",
+						"          CustomerID as integer,",
+						"          CustomerName as string,",
+						"          City as string,",
+						"          Salary as decimal(10,2),",
+						"          LastUpdated as timestamp",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> srcdimcustomersqltable",
+						"srccustomercsv, srcdimcustomersqltable lookup(toInteger(srccustomercsv@CustomerID) == srcdimcustomersqltable@CustomerID,",
+						"     multiple: false,",
+						"     pickup: 'any',",
+						"     broadcast: 'auto')~> lookupforcsvdimcustomer",
+						"lookupforcsvdimcustomer split(isMatch(),",
+						"     disjoint: false) ~> split1@(MatchedRows, NewRows)",
+						"split1@MatchedRows derive(LastUpdated = currentUTC()) ~> derivedColumn1",
+						"derivedColumn1 alterRow(updateIf(true())) ~> Updaterow",
+						"split1@NewRows derive(LastUpdated = currentUTC()) ~> derivedColumn2",
+						"derivedColumn2 alterRow(insertIf(true())) ~> InsertRow",
+						"Updaterow sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:false,",
+						"     updateable:true,",
+						"     upsertable:false,",
+						"     keys:['CustomerID'],",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkfromUpdatedRows",
+						"InsertRow sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkfromNewRows"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_CustomerCSV_05')]",
+				"[concat(variables('factoryId'), '/datasets/ds_DimCustomer_05')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_SCD_Type1_06')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_CustomerCSV_06",
+								"type": "DatasetReference"
+							},
+							"name": "source1csv"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_06",
+								"type": "DatasetReference"
+							},
+							"name": "source2dimcustomer"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_06",
+								"type": "DatasetReference"
+							},
+							"name": "sink1FromUpdate"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_06",
+								"type": "DatasetReference"
+							},
+							"name": "sink1FromInsert"
+						}
+					],
+					"transformations": [
+						{
+							"name": "lookup1"
+						},
+						{
+							"name": "split1"
+						},
+						{
+							"name": "derivedColumn2Insert"
+						},
+						{
+							"name": "derivedColumn3Unchanged"
+						},
+						{
+							"name": "derivedColumn1Update"
+						},
+						{
+							"name": "AlterRow1Update"
+						},
+						{
+							"name": "alterRow1Insert"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          CustomerID as string,",
+						"          FullName as string,",
+						"          Email as string,",
+						"          Phone as string,",
+						"          City as string,",
+						"          Segment as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1csv",
+						"source(output(",
+						"          CustomerID as integer,",
+						"          FullName as string,",
+						"          Email as string,",
+						"          Phone as string,",
+						"          City as string,",
+						"          Segment as string,",
+						"          LastUpdated as timestamp",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> source2dimcustomer",
+						"source1csv, source2dimcustomer lookup(source1csv@CustomerID == toString(source2dimcustomer@CustomerID),",
+						"     multiple: false,",
+						"     pickup: 'any',",
+						"     broadcast: 'auto')~> lookup1",
+						"lookup1 split((source1csv@CustomerID==toString(source2dimcustomer@CustomerID)) &&\r",
+						"(\r",
+						"(source1csv@FullName!=source2dimcustomer@FullName)||\r",
+						"(source1csv@Email!=source2dimcustomer@Email)||\r",
+						"(source1csv@Phone!=source2dimcustomer@Phone)||\r",
+						"(source1csv@City!=source2dimcustomer@City)||\r",
+						"(source1csv@Segment!=source2dimcustomer@Segment)\r",
+						"),",
+						"     isNull(source2dimcustomer@CustomerID),",
+						"     disjoint: false) ~> split1@(UpdateRows, InsertRows, UnchangedRows)",
+						"split1@InsertRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn2Insert",
+						"split1@UnchangedRows derive(LastUpdated = LastUpdated) ~> derivedColumn3Unchanged",
+						"split1@UpdateRows derive(LastUpdated = iif(\r",
+						"        ((split1@UpdateRows@FullName!=split1@UpdateRows@CustomerID)\r",
+						"            ||(split1@UpdateRows@Email!=split1@UpdateRows@Email)\r",
+						"            ||(split1@UpdateRows@Phone!=split1@UpdateRows@Phone)\r",
+						"            ||(split1@UpdateRows@City!=split1@UpdateRows@City)\r",
+						"            ||(split1@UpdateRows@Segment!=split1@UpdateRows@Segment))\r",
+						"    ,currentTimestamp(),LastUpdated\r",
+						"    )) ~> derivedColumn1Update",
+						"derivedColumn1Update alterRow(updateIf(true())) ~> AlterRow1Update",
+						"derivedColumn2Insert alterRow(insertIf(true())) ~> alterRow1Insert",
+						"AlterRow1Update sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:false,",
+						"     updateable:true,",
+						"     upsertable:false,",
+						"     keys:['CustomerID'],",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1FromUpdate",
+						"alterRow1Insert sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1FromInsert"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_CustomerCSV_06')]",
+				"[concat(variables('factoryId'), '/datasets/ds_DimCustomer_06')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_SCD_Type1_07')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_CustomerCSV_07",
+								"type": "DatasetReference"
+							},
+							"name": "source1csvfile"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_07",
+								"type": "DatasetReference"
+							},
+							"name": "source1sqltable"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_07",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_DimCustomer_07",
+								"type": "DatasetReference"
+							},
+							"name": "sink2"
+						}
+					],
+					"transformations": [
+						{
+							"name": "lookup1"
+						},
+						{
+							"name": "split1"
+						},
+						{
+							"name": "derivedColumn1Update"
+						},
+						{
+							"name": "derivedColumn1Insert"
+						},
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "alterRow1Update"
+						},
+						{
+							"name": "alterRow1Insert"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          CustomerID as integer,",
+						"          CustomerName as string,",
+						"          City as string,",
+						"          Salary as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1csvfile",
+						"source(output(",
+						"          CustomerID as integer,",
+						"          CustomerName as string,",
+						"          City as string,",
+						"          Salary as decimal(10,2),",
+						"          LastUpdated as timestamp",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> source1sqltable",
+						"source1csvfile, source1sqltable lookup(source1csvfile@CustomerID == source1sqltable@CustomerID,",
+						"     multiple: false,",
+						"     pickup: 'any',",
+						"     broadcast: 'auto')~> lookup1",
+						"lookup1 split((\r",
+						"    (source1csvfile@CustomerID==source1sqltable@CustomerID)&&\r",
+						"    (\r",
+						"       (source1csvfile@CustomerName!=source1sqltable@CustomerName)||\r",
+						"         (source1csvfile@City!=source1sqltable@City)||\r",
+						"       (source1csvfile@Salary!=source1sqltable@Salary)   \r",
+						"    )\r",
+						"\r",
+						"    ),",
+						"     isNull(source1sqltable@CustomerID),",
+						"     disjoint: false) ~> split1@(UpdateRows, NewRows, Unchanged)",
+						"split1@UpdateRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn1Update",
+						"split1@NewRows derive(LastUpdated = currentTimestamp()) ~> derivedColumn1Insert",
+						"split1@Unchanged derive(LastUpdated = LastUpdated) ~> derivedColumn1",
+						"derivedColumn1Update alterRow(updateIf(true())) ~> alterRow1Update",
+						"derivedColumn1Insert alterRow(insertIf(true())) ~> alterRow1Insert",
+						"alterRow1Update sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:false,",
+						"     updateable:true,",
+						"     upsertable:false,",
+						"     keys:['CustomerID'],",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1",
+						"alterRow1Insert sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink2"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_CustomerCSV_07')]",
+				"[concat(variables('factoryId'), '/datasets/ds_DimCustomer_07')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/df_scdType1_customer_08')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ds_source_csv_param_08",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_dimcustomer_sql_08",
+								"type": "DatasetReference"
+							},
+							"name": "srcDimCustomer"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ds_raw_sql_08",
+								"type": "DatasetReference"
+							},
+							"name": "sinkRaw"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_stage_sql_08",
+								"type": "DatasetReference"
+							},
+							"name": "sinkStage"
+						},
+						{
+							"dataset": {
+								"referenceName": "ds_dimcustomer_sql_08",
+								"type": "DatasetReference"
+							},
+							"name": "sinkDimCustomer"
+						}
+					],
+					"transformations": [
+						{
+							"name": "drvRawAudit"
+						},
+						{
+							"name": "drvClean"
+						},
+						{
+							"name": "fltValidRows"
+						},
+						{
+							"name": "drvStage"
+						},
+						{
+							"name": "jnSCD1"
+						},
+						{
+							"name": "drvSCDFlags"
+						},
+						{
+							"name": "alterRowSCD1"
+						},
+						{
+							"name": "selFinalCols"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          CustomerID as short,",
+						"          FullName as string,",
+						"          Email as string,",
+						"          Phone as string,",
+						"          City as string,",
+						"          Segment as string,",
+						"          Country as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source(output(",
+						"          CustomerID as integer,",
+						"          FullName as string,",
+						"          Email as string,",
+						"          Phone as string,",
+						"          City as string,",
+						"          Segment as string,",
+						"          Country as string,",
+						"          Region as string,",
+						"          EmailDomain as string,",
+						"          LastUpdated as timestamp,",
+						"          CreatedDate as timestamp",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     isolationLevel: 'READ_UNCOMMITTED',",
+						"     format: 'table') ~> srcDimCustomer",
+						"source1 derive(LoadDate = currentTimestamp()) ~> drvRawAudit",
+						"drvRawAudit derive(CustomerID = toInteger(CustomerID),",
+						"          FullName = trim(FullName),",
+						"          Email = lower(trim(Email)),",
+						"          Phone = regexReplace(Phone, '[^0-9]', ''),",
+						"          City = initCap(trim(City)),",
+						"          Segment = upper(trim(Segment)),",
+						"          Country = trim(Country),",
+						"          LoadDate = currentTimestamp()) ~> drvClean",
+						"drvClean filter(!isNull(CustomerID) && !isNull(FullName) && length(Email) > 0) ~> fltValidRows",
+						"fltValidRows derive(Region = case(Country == 'India', 'APAC', Country == 'USA' || Country == 'Canada', 'AMER', Country == 'UK', 'EMEA', 'OTHER'),",
+						"          EmailDomain = split(Email,'@')[2]) ~> drvStage",
+						"drvStage, srcDimCustomer join(drvClean@CustomerID == srcDimCustomer@CustomerID,",
+						"     joinType:'left',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> jnSCD1",
+						"jnSCD1 derive(isNew = isNull(srcDimCustomer@CustomerID),",
+						"          isChanged = !isNull(srcDimCustomer@CustomerID)\r",
+						"\r",
+						"&& \r",
+						"(\r",
+						"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+						"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+						"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+						"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+						"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+						"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+						"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+						"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+						"    \r",
+						"),",
+						"          isUnchanged = !isNull(srcDimCustomer@CustomerID)\r",
+						"&& \r",
+						"!(\r",
+						"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+						"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+						"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+						"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+						"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+						"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+						"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+						"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+						"),",
+						"          LastUpdated = iif( \r",
+						"    \r",
+						"( !isNull(drvClean@CustomerID) || isNull(drvClean@CustomerID)) &&\r",
+						"(\r",
+						"    coalesce(trim(drvClean@FullName),'') != coalesce(trim(srcDimCustomer@FullName),'')  \r",
+						"    || coalesce(lower(drvClean@Email),'') != coalesce(lower(srcDimCustomer@Email),'')   \r",
+						"    || coalesce(drvClean@Phone,'') != coalesce(srcDimCustomer@Phone,'')  \r",
+						"    || coalesce(initCap(drvClean@City),'') != coalesce(initCap(srcDimCustomer@City),'')   \r",
+						"    || coalesce(upper(drvClean@Segment),'') != coalesce(upper(srcDimCustomer@Segment),'') \r",
+						"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
+						"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
+						"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+						" ), currentTimestamp(), \r",
+						" LastUpdated)) ~> drvSCDFlags",
+						"drvSCDFlags alterRow(insertIf(isNew==true()),",
+						"     upsertIf(isChanged==true())) ~> alterRowSCD1",
+						"alterRowSCD1 select(mapColumn(",
+						"          CustomerID = drvClean@CustomerID,",
+						"          FullName = drvClean@FullName,",
+						"          Email = drvClean@Email,",
+						"          Phone = drvClean@Phone,",
+						"          City = drvClean@City,",
+						"          Segment = drvClean@Segment,",
+						"          Country = drvClean@Country,",
+						"          LoadDate,",
+						"          Region = drvStage@Region,",
+						"          EmailDomain = drvStage@EmailDomain,",
+						"          CustomerID = srcDimCustomer@CustomerID,",
+						"          FullName = srcDimCustomer@FullName,",
+						"          Email = srcDimCustomer@Email,",
+						"          Phone = srcDimCustomer@Phone,",
+						"          City = srcDimCustomer@City,",
+						"          Segment = srcDimCustomer@Segment,",
+						"          Country = srcDimCustomer@Country,",
+						"          Region = srcDimCustomer@Region,",
+						"          EmailDomain = srcDimCustomer@EmailDomain,",
+						"          LastUpdated,",
+						"          CreatedDate,",
+						"          isNew,",
+						"          isChanged,",
+						"          isUnchanged",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> selFinalCols",
+						"drvStage sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkRaw",
+						"drvStage sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     mapColumn(",
+						"          CustomerID,",
+						"          FullName,",
+						"          Email,",
+						"          Phone,",
+						"          City,",
+						"          Segment,",
+						"          Country,",
+						"          Region,",
+						"          EmailDomain,",
+						"          LoadDate",
+						"     )) ~> sinkStage",
+						"selFinalCols sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:true,",
+						"     keys:['CustomerID'],",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sinkDimCustomer"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_source_csv_param_08')]",
+				"[concat(variables('factoryId'), '/datasets/ds_dimcustomer_sql_08')]",
+				"[concat(variables('factoryId'), '/datasets/ds_raw_sql_08')]",
+				"[concat(variables('factoryId'), '/datasets/ds_stage_sql_08')]"
+			]
 		}
 	]
 }

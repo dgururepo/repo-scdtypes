@@ -4,6 +4,114 @@
 	"parameters": {
 		"factoryName": {
 			"value": "adf-scdtypes"
+		},
+		"ls_CustomerCSV_06_accountKey": {
+			"value": ""
+		},
+		"ls_CustomerCSV_07_accountKey": {
+			"value": ""
+		},
+		"ls_DimCustomer_06_password": {
+			"value": ""
+		},
+		"ls_DimCustomer_07_password": {
+			"value": ""
+		},
+		"ls_adls_gen2_08_accountKey": {
+			"value": ""
+		},
+		"ls_azure_sql_08_password": {
+			"value": ""
+		},
+		"ls_dim_sqltable_scd1_password": {
+			"value": ""
+		},
+		"ls_dimcustomer_scdtype1_05_password": {
+			"value": ""
+		},
+		"ls_existingdim_scd1_sqltable_password": {
+			"value": ""
+		},
+		"ls_source_scd1_excel_accountKey": {
+			"value": ""
+		},
+		"ls_sourceexcel_scd1_accountKey": {
+			"value": ""
+		},
+		"ls_src_csvfile_scdtype1_05_accountKey": {
+			"value": ""
+		},
+		"ls_CustomerCSV_06_properties_typeProperties_url": {
+			"value": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_CustomerCSV_07_properties_typeProperties_url": {
+			"value": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_database": {
+			"value": "PracticeDatabase"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_userName": {
+			"value": "adsasql"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_database": {
+			"value": "TestDb_scdtypes"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_userName": {
+			"value": "adsasql"
+		},
+		"ls_adls_gen2_08_properties_typeProperties_url": {
+			"value": "https://srinistgadlsgen2.dfs.core.windows.net/"
+		},
+		"ls_azure_sql_08_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_azure_sql_08_properties_typeProperties_database": {
+			"value": "TestDb_scdtypes"
+		},
+		"ls_azure_sql_08_properties_typeProperties_userName": {
+			"value": "adsasql"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_database": {
+			"value": "sampleDb"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_userName": {
+			"value": "adsasql"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_database": {
+			"value": "sampleDb"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_userName": {
+			"value": "adsasql"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_server": {
+			"value": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_database": {
+			"value": "SrinivasPracticeDB"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_userName": {
+			"value": "srinivas"
+		},
+		"ls_source_scd1_excel_properties_typeProperties_url": {
+			"value": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_sourceexcel_scd1_properties_typeProperties_url": {
+			"value": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_src_csvfile_scdtype1_05_properties_typeProperties_url": {
+			"value": "https://stgtopractice27062026.dfs.core.windows.net/"
 		}
 	}
 }

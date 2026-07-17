@@ -7,6 +7,150 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-scdtypes"
 		},
+		"ls_CustomerCSV_06_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_06'"
+		},
+		"ls_CustomerCSV_07_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_CustomerCSV_07'"
+		},
+		"ls_DimCustomer_06_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_06'"
+		},
+		"ls_DimCustomer_07_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_DimCustomer_07'"
+		},
+		"ls_adls_gen2_08_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_gen2_08'"
+		},
+		"ls_azure_sql_08_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azure_sql_08'"
+		},
+		"ls_dim_sqltable_scd1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dim_sqltable_scd1'"
+		},
+		"ls_dimcustomer_scdtype1_05_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_dimcustomer_scdtype1_05'"
+		},
+		"ls_existingdim_scd1_sqltable_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_existingdim_scd1_sqltable'"
+		},
+		"ls_source_scd1_excel_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_source_scd1_excel'"
+		},
+		"ls_sourceexcel_scd1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_sourceexcel_scd1'"
+		},
+		"ls_src_csvfile_scdtype1_05_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_src_csvfile_scdtype1_05'"
+		},
+		"ls_CustomerCSV_06_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_CustomerCSV_07_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDatabase"
+		},
+		"ls_DimCustomer_06_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_DimCustomer_07_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_adls_gen2_08_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://srinistgadlsgen2.dfs.core.windows.net/"
+		},
+		"ls_azure_sql_08_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_azure_sql_08_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDb_scdtypes"
+		},
+		"ls_azure_sql_08_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dim_sqltable_scd1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sampleDb"
+		},
+		"ls_dimcustomer_scdtype1_05_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adsasql"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserverforpractice1.database.windows.net"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "SrinivasPracticeDB"
+		},
+		"ls_existingdim_scd1_sqltable_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "srinivas"
+		},
+		"ls_source_scd1_excel_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_sourceexcel_scd1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
+		"ls_src_csvfile_scdtype1_05_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stgtopractice27062026.dfs.core.windows.net/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -33,10 +177,138 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ls_CustomerCSV_06_accountKey": {
+						"value": "[parameters('ls_CustomerCSV_06_accountKey')]"
+					},
+					"ls_CustomerCSV_07_accountKey": {
+						"value": "[parameters('ls_CustomerCSV_07_accountKey')]"
+					},
+					"ls_DimCustomer_06_password": {
+						"value": "[parameters('ls_DimCustomer_06_password')]"
+					},
+					"ls_DimCustomer_07_password": {
+						"value": "[parameters('ls_DimCustomer_07_password')]"
+					},
+					"ls_adls_gen2_08_accountKey": {
+						"value": "[parameters('ls_adls_gen2_08_accountKey')]"
+					},
+					"ls_azure_sql_08_password": {
+						"value": "[parameters('ls_azure_sql_08_password')]"
+					},
+					"ls_dim_sqltable_scd1_password": {
+						"value": "[parameters('ls_dim_sqltable_scd1_password')]"
+					},
+					"ls_dimcustomer_scdtype1_05_password": {
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_password')]"
+					},
+					"ls_existingdim_scd1_sqltable_password": {
+						"value": "[parameters('ls_existingdim_scd1_sqltable_password')]"
+					},
+					"ls_source_scd1_excel_accountKey": {
+						"value": "[parameters('ls_source_scd1_excel_accountKey')]"
+					},
+					"ls_sourceexcel_scd1_accountKey": {
+						"value": "[parameters('ls_sourceexcel_scd1_accountKey')]"
+					},
+					"ls_src_csvfile_scdtype1_05_accountKey": {
+						"value": "[parameters('ls_src_csvfile_scdtype1_05_accountKey')]"
+					},
+					"ls_CustomerCSV_06_properties_typeProperties_url": {
+						"value": "[parameters('ls_CustomerCSV_06_properties_typeProperties_url')]"
+					},
+					"ls_CustomerCSV_07_properties_typeProperties_url": {
+						"value": "[parameters('ls_CustomerCSV_07_properties_typeProperties_url')]"
+					},
+					"ls_DimCustomer_06_properties_typeProperties_server": {
+						"value": "[parameters('ls_DimCustomer_06_properties_typeProperties_server')]"
+					},
+					"ls_DimCustomer_06_properties_typeProperties_database": {
+						"value": "[parameters('ls_DimCustomer_06_properties_typeProperties_database')]"
+					},
+					"ls_DimCustomer_06_properties_typeProperties_userName": {
+						"value": "[parameters('ls_DimCustomer_06_properties_typeProperties_userName')]"
+					},
+					"ls_DimCustomer_07_properties_typeProperties_server": {
+						"value": "[parameters('ls_DimCustomer_07_properties_typeProperties_server')]"
+					},
+					"ls_DimCustomer_07_properties_typeProperties_database": {
+						"value": "[parameters('ls_DimCustomer_07_properties_typeProperties_database')]"
+					},
+					"ls_DimCustomer_07_properties_typeProperties_userName": {
+						"value": "[parameters('ls_DimCustomer_07_properties_typeProperties_userName')]"
+					},
+					"ls_adls_gen2_08_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_gen2_08_properties_typeProperties_url')]"
+					},
+					"ls_azure_sql_08_properties_typeProperties_server": {
+						"value": "[parameters('ls_azure_sql_08_properties_typeProperties_server')]"
+					},
+					"ls_azure_sql_08_properties_typeProperties_database": {
+						"value": "[parameters('ls_azure_sql_08_properties_typeProperties_database')]"
+					},
+					"ls_azure_sql_08_properties_typeProperties_userName": {
+						"value": "[parameters('ls_azure_sql_08_properties_typeProperties_userName')]"
+					},
+					"ls_dim_sqltable_scd1_properties_typeProperties_server": {
+						"value": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_server')]"
+					},
+					"ls_dim_sqltable_scd1_properties_typeProperties_database": {
+						"value": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_database')]"
+					},
+					"ls_dim_sqltable_scd1_properties_typeProperties_userName": {
+						"value": "[parameters('ls_dim_sqltable_scd1_properties_typeProperties_userName')]"
+					},
+					"ls_dimcustomer_scdtype1_05_properties_typeProperties_server": {
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_server')]"
+					},
+					"ls_dimcustomer_scdtype1_05_properties_typeProperties_database": {
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_database')]"
+					},
+					"ls_dimcustomer_scdtype1_05_properties_typeProperties_userName": {
+						"value": "[parameters('ls_dimcustomer_scdtype1_05_properties_typeProperties_userName')]"
+					},
+					"ls_existingdim_scd1_sqltable_properties_typeProperties_server": {
+						"value": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_server')]"
+					},
+					"ls_existingdim_scd1_sqltable_properties_typeProperties_database": {
+						"value": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_database')]"
+					},
+					"ls_existingdim_scd1_sqltable_properties_typeProperties_userName": {
+						"value": "[parameters('ls_existingdim_scd1_sqltable_properties_typeProperties_userName')]"
+					},
+					"ls_source_scd1_excel_properties_typeProperties_url": {
+						"value": "[parameters('ls_source_scd1_excel_properties_typeProperties_url')]"
+					},
+					"ls_sourceexcel_scd1_properties_typeProperties_url": {
+						"value": "[parameters('ls_sourceexcel_scd1_properties_typeProperties_url')]"
+					},
+					"ls_src_csvfile_scdtype1_05_properties_typeProperties_url": {
+						"value": "[parameters('ls_src_csvfile_scdtype1_05_properties_typeProperties_url')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-scdtypes_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-scdtypes_ArmTemplate_0')]"
+			]
 		}
 	]
 }
