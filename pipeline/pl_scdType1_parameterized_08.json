@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lkpConfig').output.firstRow.value",
+						"value": "@activity('lkpConfig').output.firstRow",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -64,9 +64,18 @@
 									"type": "DataFlowReference",
 									"datasetParameters": {
 										"source1": {
-											"pContainer": "input",
-											"pDirectory": "daily",
-											"pFileName": "scd1_customer_source_day2-params.csv"
+											"pContainer": {
+												"value": "@item().SourceContainer",
+												"type": "Expression"
+											},
+											"pDirectory": {
+												"value": "@item().DirectoryName",
+												"type": "Expression"
+											},
+											"pFileName": {
+												"value": "@item().FileName",
+												"type": "Expression"
+											}
 										}
 									}
 								},
