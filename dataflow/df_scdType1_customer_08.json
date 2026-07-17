@@ -66,6 +66,12 @@
 				},
 				{
 					"name": "selFinalCols"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "FilterisUnchangedRecords"
 				}
 			],
 			"scriptLines": [
@@ -141,6 +147,8 @@
 				"    || coalesce(trim(drvClean@Country),'') != coalesce(trim(srcDimCustomer@Country),'') \r",
 				"    || coalesce(upper(drvStage@Region),'') != coalesce(upper(srcDimCustomer@Region),'') \r",
 				"    || coalesce(lower(drvStage@EmailDomain),'') != coalesce(lower(srcDimCustomer@EmailDomain),'')\r",
+				")) ~> drvSCDFlags",
+				"FilterisUnchangedRecords alterRow(insertIf(isNew==true()),",
 				"),",
 				"          LastUpdated = iif( \r",
 				"    \r",
@@ -188,6 +196,11 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selFinalCols",
+				"drvSCDFlags derive(LastUpdated = case( \r",
+				"   (isNew==true() || isChanged==true())\r",
+				"        ,currentTimestamp()\r",
+				")) ~> derivedColumn1",
+				"derivedColumn1 filter(isNew || isChanged) ~> FilterisUnchangedRecords",
 				"drvStage sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -196,6 +209,7 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
+				"     preSQLs:['truncate table raw.Customer_Raw'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sinkRaw",
 				"drvStage sink(allowSchemaDrift: true,",
@@ -206,6 +220,7 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
+				"     preSQLs:['truncate table stage.Customer_Stage'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
