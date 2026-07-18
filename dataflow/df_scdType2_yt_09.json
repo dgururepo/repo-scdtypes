@@ -1,0 +1,193 @@
+{
+	"name": "df_scdType2_yt_09",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_source_sql_yt_09",
+						"type": "DatasetReference"
+					},
+					"name": "sourcesql09"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dimsource_09",
+						"type": "DatasetReference"
+					},
+					"name": "DimSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dimsource_09",
+						"type": "DatasetReference"
+					},
+					"name": "sink1newrecordsinsert"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_dimsource_09",
+						"type": "DatasetReference"
+					},
+					"name": "sink1updatedMarkAsOld"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_source_sql_yt_09",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "renamingsource"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "select1new"
+				},
+				{
+					"name": "UpdatedMarkasOld"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "alterRow2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EMPNO as integer,",
+				"          NAME as string,",
+				"          DESG as string,",
+				"          SALARY as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcesql09",
+				"source(output(",
+				"          ESK as integer,",
+				"          EMPNO as integer,",
+				"          NAME as string,",
+				"          DESG as string,",
+				"          SAL as integer,",
+				"          STARTDATE as timestamp,",
+				"          ENDDATE as timestamp,",
+				"          ISACTIVE as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> DimSource",
+				"sourcesql09 select(mapColumn(",
+				"          sourceEMPNO = EMPNO,",
+				"          sourceNAME = NAME,",
+				"          sourceDESG = DESG,",
+				"          sourceSALARY = SALARY",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> renamingsource",
+				"renamingsource, DimSource lookup(sourceEMPNO == EMPNO,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 split(isNull(ESK),",
+				"     disjoint: false) ~> split1@(isNew, isChanged)",
+				"split1@isNew select(mapColumn(",
+				"          sourceEMPNO,",
+				"          sourceNAME,",
+				"          sourceDESG,",
+				"          sourceSALARY,",
+				"          ESK,",
+				"          EMPNO,",
+				"          NAME,",
+				"          DESG,",
+				"          SAL,",
+				"          STARTDATE,",
+				"          ENDDATE,",
+				"          ISACTIVE",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1new",
+				"split1@isChanged split(md5(concat(toString(sourceEMPNO), sourceNAME,sourceDESG,toString(sourceSALARY)))!=md5(toString(EMPNO),NAME,DESG,toString(SAL)),",
+				"     disjoint: false) ~> UpdatedMarkasOld@(UpdatedMarkasOldInActive, UpdatedMarkasInsertActice)",
+				"UpdatedMarkasOld@UpdatedMarkasOldInActive derive(ENDDATE = currentUTC(),",
+				"          ISACTIVE = 0) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(true())) ~> alterRow1",
+				"UpdatedMarkasOld@UpdatedMarkasInsertActice derive(ENDDATE = toDate('12/31/9999', 'MM/dd/yyyy')) ~> derivedColumn2",
+				"derivedColumn2 alterRow(insertIf(true())) ~> alterRow2",
+				"select1new sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ESK as integer,",
+				"          EMPNO as integer,",
+				"          NAME as string,",
+				"          DESG as string,",
+				"          SAL as integer,",
+				"          STARTDATE as timestamp,",
+				"          ENDDATE as timestamp,",
+				"          ISACTIVE as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1newrecordsinsert",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ESK as integer,",
+				"          EMPNO as integer,",
+				"          NAME as string,",
+				"          DESG as string,",
+				"          SAL as integer,",
+				"          STARTDATE as timestamp,",
+				"          ENDDATE as timestamp,",
+				"          ISACTIVE as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['ESK'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1updatedMarkAsOld",
+				"alterRow2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EMPNO as integer,",
+				"          NAME as string,",
+				"          DESG as string,",
+				"          SALARY as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name": "ds_source_sql_yt_09",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_sql_yt_09",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "EMPNO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "DESG",
+				"type": "varchar"
+			},
+			{
+				"name": "SALARY",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "OLTEMP"
+		}
+	}
+}

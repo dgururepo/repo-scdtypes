@@ -1,0 +1,57 @@
+{
+	"name": "ds_dimsource_09",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_sql_yt_09",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ESK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EMPNO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "DESG",
+				"type": "varchar"
+			},
+			{
+				"name": "SAL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STARTDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ENDDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ISACTIVE",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIMEMP"
+		}
+	}
+}
